@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    @* <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script> *@
+    <link rel="stylesheet" href="~/css/styles.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+</head>
+<body>
+    <div class="contenedor-form">
+        <div id="fotografoContainer">
+            @using (Html.BeginForm("IniciarSesionFotografo", "Home", FormMethod.Post))
+            {
+                <input type="hidden" name="user-type" value="Usuario">
+                <div class="header">
+                    <a href="@Url.Action("IniciarSesionUsuario", "Home")" class="selected" data-user-type="Usuario">USUARIO</a>
+                    <a href="@Url.Action("IniciarSesionFotografo", "Home")" id="fotografo-link">FOTOGRAFO</a>
+                    <a href="#" data-user-type="Administrador">ADMINISTRADOR</a>
+                </div>
+
+                <hr>
+                <div class="fila">
+                    <label for="Email">Email</label>
+                    @Html.TextBox("Email", null, new { id = "Email" })
+                </div>
+                <div class="fila">
+                    <label for="Clave">Contraseña</label>
+                    @Html.Password("Clave", null, new { id = "Clave" })
+                </div>
+                <div class="fila">
+                    <input type="checkbox" class="check" id="mantener-sesion" name="mantener-sesion">
+                    <label for="mantener-sesion">Mantener Sesión</label>
+                </div>
+                <input type="submit" value="Iniciar Sesión" class="btn">
+                <p><a href="@Url.Action("RegistroFotografo", "Home")" id="switchToSignup">¿No tienes una cuenta? Regístrate aquí como Usuario.</a></p>
+            }
+        </div>
+
+        <!-- Repeat the above pattern for Fotografo and Administrador containers -->
+
+        <hr>
+
+        <a href="#olvido" class="olvido">Olvidó la Contraseña</a>
+    </div>
+
+    <script src="~/js/script.js"></script>
+
+
+</body>
+</html>
