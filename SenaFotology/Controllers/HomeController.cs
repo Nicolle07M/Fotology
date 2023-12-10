@@ -7,6 +7,7 @@ namespace SenaFotology.Controllers
 {
     public class HomeController : Controller
     {
+
         // GET: Home
         public ActionResult Index()
         {
@@ -37,10 +38,34 @@ namespace SenaFotology.Controllers
                 return RedirectToAction("Index", new { error = "Credenciales inválidas" });
             }
         }
+
+
         public ActionResult PaginaCliente()
         {
             return View();
         }
+
+        public ActionResult PaginaFotografo()
+        {
+            return View();
+        }
+
+        public ActionResult PaginaCategorias()
+        {
+            return View();
+        }
+
+        public ActionResult PaginaAyuda()
+        {
+            return View();
+        }
+
+        public ActionResult PaginaContacto()
+        {
+            return View();
+        }
+
+
         public ActionResult IniciarSesionFotografo()
         {
             // Lógica de la acción IniciarSesionFotografo
@@ -57,7 +82,7 @@ namespace SenaFotology.Controllers
             if (IsValidUser(model.Email, model.Clave))
             {
                 // Redirige a un panel de usuario o página principal después de un inicio de sesión exitoso
-                return RedirectToAction("PanelDeFotografo");
+                return RedirectToAction("IniciarSesionFotografo");
             }
             else
             {

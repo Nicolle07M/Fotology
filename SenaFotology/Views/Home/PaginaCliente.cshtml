@@ -17,14 +17,14 @@
         </div>
         <nav>
             <ul class="linksnav">
-                <li><a href="pagina.html">Inicio</a></li>
-                <li><a href="fotografos.html">Fotografos</a></li>
-                <li><a href="categorias.html">Categorias</a></li>
-                <li><a href="ayuda.html">Ayuda</a></li>
-                <li><a href="contacto.html">Contacto</a></li>
+                <li><a href="@Url.Action("PaginaCliente", "Home")">Inicio</a></li>
+                <li><a href="@Url.Action("PaginaFotografo", "Home")">Fotografos</a></li>
+                <li><a href="@Url.Action("PaginaCategorias", "Home")">Categorias</a></li>
+                <li><a href="@Url.Action("PaginaAyuda", "Home")">Ayuda</a></li>
+                <li><a href="@Url.Action("PaginaContacto", "Home")">Contacto</a></li>
             </ul>
         </nav>
-        <a class="btn" href="@Url.Action("Index", "Home")""><button>Cerrar Sesion</button></a>
+        <a class="btn" href="@Url.Action("Index", "Home")"><button>Cerrar Sesion</button></a>
     </header>
 
     <div class="carrusel">
