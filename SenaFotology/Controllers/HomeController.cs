@@ -91,6 +91,7 @@ namespace SenaFotology.Controllers
             }
         }
 
+<<<<<<< HEAD
         public ActionResult PagFotografo()
         {
             return View();
@@ -102,6 +103,9 @@ namespace SenaFotology.Controllers
         }
 
         // CONTROLADOR DE USUARIO //
+=======
+
+>>>>>>> 73eb216247dec43018b24fafb927deaba466c079
 
         [HttpGet]
         public ActionResult RegistroUsuario()
