@@ -10,17 +10,17 @@ body {
 
 body {
     background: linear-gradient(to right, #ffa97e, #ff7d2c);
-    height: 100vh;
+   
     display: flex;
     align-items: center;
-    justify-content: center;
+
     margin: 0;
 }
 
 .contenedor-form {
     background-color: #fff;
     max-width: 500px;
-    width: 100%;
+    width: 80%;
     margin: auto;
     background-size: cover;
     background-position: center center;

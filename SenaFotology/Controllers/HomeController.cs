@@ -82,7 +82,7 @@ namespace SenaFotology.Controllers
             if (IsValidUser(model.Email, model.Clave))
             {
                 // Redirige a un panel de usuario o página principal después de un inicio de sesión exitoso
-                return RedirectToAction("IniciarSesionFotografo");
+                return RedirectToAction("PagFotografo");
             }
             else
             {
@@ -90,6 +90,18 @@ namespace SenaFotology.Controllers
                 return RedirectToAction("Index", new { error = "Credenciales inválidas" });
             }
         }
+
+        public ActionResult PagFotografo()
+        {
+            return View();
+        }
+
+        public ActionResult EditarPerfil()
+        {
+            return View();
+        }
+
+        // CONTROLADOR DE USUARIO //
 
         [HttpGet]
         public ActionResult RegistroUsuario()
@@ -124,6 +136,44 @@ namespace SenaFotology.Controllers
             // Redirige a la página de inicio de sesión después de un registro exitoso
             return RedirectToAction("Index");
         }
+
+        public ActionResult IniciarSesionAdministrador()
+        {
+            // Lógica de la acción IniciarSesionFotografo
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult IniciarSesionAdministrador(LoginViewModel model)
+        {
+            // Aquí deberías implementar la lógica de autenticación
+            // Verifica el correo electrónico y la contraseña en tu base de datos
+            // En un escenario real, reemplaza el siguiente código con tu propia lógica
+
+            if (IsValidUser(model.Email, model.Clave))
+            {
+                // Redirige a un panel de administrador después de un inicio de sesión exitoso
+                return RedirectToAction("PagAdministrador");
+            }
+            else
+            {
+                // Redirige de nuevo a la página de inicio de sesión con un mensaje de error
+                return RedirectToAction("IniciarSesionAdministrador", new { error = "Credenciales inválidas" });
+            }
+        }
+
+        public ActionResult PagAdministrador()
+        {
+            // Lógica para mostrar el panel de administrador después del inicio de sesión exitoso
+            return View();
+        }
+
+        public ActionResult PagClienteCrud()
+        {
+            // Lógica para mostrar el panel de administrador después del inicio de sesión exitoso
+            return View();
+        }
+
 
 
         // Se pueden agregar acciones adicionales para Fotógrafo y Administrador de manera similar

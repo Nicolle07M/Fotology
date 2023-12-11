@@ -1,0 +1,104 @@
+﻿@{
+    Layout = null; // Esto evita que utilices un diseño predeterminado si lo tienes configurado
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* Estilo para el botón de eliminación */
+        .eliminar-btn {
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+    </style>
+    <link rel="stylesheet" href="~/css/styleadministrador.css"> <!-- Ajusta la ruta según tu estructura de carpetas y configuración de contenido estático -->
+    <title>Panel de Administrador</title>
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <img src="~/Recursos/LOGOA.png" alt="Logo" /> <!-- Ajusta la ruta según tu estructura de carpetas y configuración de contenido estático -->
+        </div>
+        <nav>
+            <ul class="linksnav">
+                <li><a href="#">Inicio</a></li>
+            </ul>
+        </nav>
+        <a class="btn" href="@Url.Action("Index", "Home")">
+            <button>Cerrar Sesión</button>
+        </a>
+    </header>
+
+    <div class="container">
+        <h1>Panel de Administrador</h1>
+        <button class="filter-btn">
+            <a href="@Url.Action("PagAdministrador", "Home")">Fotografos</a>
+        </button>
+        <button class="filter-btn" onclick="filterData('Clientes')">Clientes</button>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre del cliente</th>
+                    <th>Email</th>
+                    <th>Contraseña</th>
+                    <th>Telefono</th>
+                    <th>Acción</th> <!-- Nueva columna para el botón de eliminación -->
+                </tr>
+            </thead>
+            <tbody>
+               @*  @using (var conexion = new SqlConnection("tu_cadena_de_conexion")) <!-- Ajusta la cadena de conexión a tu base de datos -->
+                {
+                    conexion.Open();
+                    var sql = "SELECT * FROM cliente";
+                    var datos = conexion.Query<dynamic>(sql);
+
+                    foreach (var dato in datos)
+                    {
+                        <tr>
+                            <td>@dato.IDcliente</td>
+                            <td>@dato.Nombre_cliente</td>
+                            <td>@dato.Email</td>
+                            <td>@dato.Contraseña</td>
+                            <td>@dato.Telefono</td>
+                            <td>
+                                <!-- Formulario para enviar la solicitud de eliminación -->
+                                <form method="post" action="@Url.Action("EliminarCliente", "TuControlador")"> <!-- Ajusta el nombre del controlador según tu configuración -->
+                                    <input type="hidden" name="eliminar_id" value="@dato.IDcliente" />
+                                    <button type="submit" class="eliminar-btn">Eliminar</button>
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                } *@
+            </tbody>
+        </table>
+    </div>
+
+ @*    @if (IsPost && !string.IsNullOrEmpty(Request["eliminar_id"]))
+    {
+        var eliminarId = Request["eliminar_id"];
+        using (var conexion = new SqlConnection("tu_cadena_de_conexion")) <!-- Ajusta la cadena de conexión a tu base de datos -->
+        {
+            conexion.Open();
+            var sql = $"DELETE FROM cliente WHERE IDcliente = '{eliminarId}'";
+            var resultado = conexion.Execute(sql);
+            if (resultado > 0)
+            {
+                <p>Registro eliminado correctamente.</p>
+            }
+            else
+            {
+                <p>Error al eliminar el registro.</p>
+            }
+        }
+    } *@
+
+</body>
+</html>

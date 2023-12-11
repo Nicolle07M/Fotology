@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿@{
+    Layout = null; // Esto evita que utilices un diseño predeterminado si lo tienes configurado
+}
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -18,10 +22,10 @@
             @using (Html.BeginForm("IniciarSesionFotografo", "Home", FormMethod.Post))
             {
                 <input type="hidden" name="user-type" value="Usuario">
-                <div class="header">
-                    <a href="@Url.Action("IniciarSesionUsuario", "Home")" class="selected" data-user-type="Usuario">USUARIO</a>
-                    <a href="@Url.Action("IniciarSesionFotografo", "Home")" data-user-type="Fotografo">FOTOGRAFO</a>
-                    <a href="@Url.Action("IniciarSesionAdministrador", "Home")" data-user-type="Administrador">ADMINISTRADOR</a>
+                <div class="header">@* 
+                    <a href="@Url.Action("IniciarSesionUsuario", "Home")" class="selected" data-user-type="Usuario">USUARIO</a> *@
+                    <a href="@Url.Action("IniciarSesionFotografo", "Home")" class="selected" data-user-type="Fotografo">FOTOGRAFO</a>
+                    @* <a href="@Url.Action("IniciarSesionAdministrador", "Home")" data-user-type="Administrador">ADMINISTRADOR</a> *@
                 </div>
 
                 <hr>
@@ -38,13 +42,16 @@
                     <label for="mantener-sesion">Mantener Sesión</label>
                 </div>
                 <input type="submit" value="Iniciar Sesión" class="btn">
-                <p><a href="@Url.Action("RegistroFotografo", "Home")" id="switchToSignup">¿No tienes una cuenta? Regístrate aquí como Usuario.</a></p>
+                <p><a href="@Url.Action("RegistroFotografo", "Home")" id="switchToSignup">¿No tienes una cuenta? Regístrate aquí como Fotografo.</a></p>
             }
         </div>
 
         <!-- Repeat the above pattern for Fotografo and Administrador containers -->
 
         <hr>
+
+        <p>¿Eres un Usuario/Cliente? <a href="@Url.Action("IniciarSesionUsuario", "Home")">Iniciar Sesión Como Usuario/Cliente</a></p>
+
 
         <a href="#olvido" class="olvido">Olvidó la Contraseña</a>
     </div>
