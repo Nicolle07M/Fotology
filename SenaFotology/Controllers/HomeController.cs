@@ -91,6 +91,8 @@ namespace SenaFotology.Controllers
             }
         }
 
+
+
         [HttpGet]
         public ActionResult RegistroUsuario()
         {
